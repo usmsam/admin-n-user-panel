@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from 'redux-react';
+import { createStore, combineReducers } from 'react-redux';
 import { loginReducer } from './reducers/loginReducer';
 import { popupReducer } from './reducers/popupReducer';
 
