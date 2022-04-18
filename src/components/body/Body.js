@@ -6,13 +6,9 @@ const Body = () => {
 
   const state = useSelector(state => state)
   const login = useSelector(state => state.login)
-  const [filtered, setFiltered] = useState(state.com)
   const dispatch = useDispatch()
   const ref = useRef()
   const ref2 = useRef()
-
-
-
   const daaa = state.com.filter((item) => {
       if(!login.loggined){
         return item.verify
@@ -20,20 +16,6 @@ const Body = () => {
         return item
       }
   })
-  useEffect(() => {
-    if (login.loggined) {
-      setFiltered(state.com)
-    }
-  }, [state.com])
-
-
-
-
-
-
-
-
-
   function addComment() {
     dispatch({ id: state.com.length + 1, type: 'ADD', payload: { title: ref.current.value, text: ref2.current.value } })
     ref.current.value = null
@@ -42,9 +24,6 @@ const Body = () => {
   function verifyComment(id) {
     dispatch({ type: "VERIFY", payload: id })
   }
-
-
-
   return (
     <>
       <>
@@ -60,8 +39,6 @@ const Body = () => {
             null
 
         }
-
-
         {
           daaa.map((item) => {
             return <div key={item.text} className='commentItem'>

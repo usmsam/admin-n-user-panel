@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, {useRef } from 'react'
 
 import {useSelector, useDispatch } from 'react-redux'
 import Error from './Error'
@@ -6,7 +6,6 @@ import Error from './Error'
 const Popup = () => {
 
     
-    const isLoggined = useSelector(state => state.login)
   
     const dispatch = useDispatch()
     const ref = useRef()

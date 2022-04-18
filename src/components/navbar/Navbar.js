@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import Sam from './sam.png'
 import Popup from './Popup';
@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <div className='navbar'>
-      <Link to='/'><img src={Sam} className='navbarlogo' /></Link>
+      <Link to='/'><img src={Sam} className='navbarlogo' alt='logo'/></Link>
       <div className='buttons'>
         <button
           className='news'
