@@ -1,4 +1,4 @@
-import React, { useRef  } from 'react'
+import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 
@@ -10,16 +10,19 @@ const Body = () => {
   const ref = useRef()
   const ref2 = useRef()
   const daaa = state.com.filter((item) => {
-      if(!login.loggined){
-        return item.verify
-      }else{
-        return item
-      }
+    if (!login.loggined) {
+      return item.verify
+    } else {
+      return item
+    }
   })
   function addComment() {
-    dispatch({ id: state.com.length + 1, type: 'ADD', payload: { title: ref.current.value, text: ref2.current.value } })
-    ref.current.value = null
-    ref2.current.value = null
+    if (ref.current.value.trim() !== '' && ref2.current.value.trim() !== '') {
+      dispatch({ id: state.com.length + 1, type: 'ADD', payload: { title: ref.current.value, text: ref2.current.value } })
+      ref.current.value = null
+      ref2.current.value = null
+    }
+
   }
   function verifyComment(id) {
     dispatch({ type: "VERIFY", payload: id })
