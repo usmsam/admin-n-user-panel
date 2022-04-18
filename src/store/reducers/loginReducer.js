@@ -12,6 +12,9 @@ export const loginReducer = (state = initialState, action) => {
             }else{
                 return {...state, loggined : false, error:true}
             }
+
+        case 'LOGOUT':
+            return {...state, loggined : false}
         default:
             return state;
     }
