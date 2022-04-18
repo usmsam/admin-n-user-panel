@@ -1,9 +1,11 @@
 import { createStore, combineReducers } from 'redux';
+import { commentReducer } from './reducers/commentReducer';
 import { loginReducer } from './reducers/loginReducer';
 import { popupReducer } from './reducers/popupReducer';
 
 const rootReducer = combineReducers({
   popup: popupReducer,
-  login : loginReducer
+  login : loginReducer,
+  com:commentReducer
 })
 export const store = createStore(rootReducer)

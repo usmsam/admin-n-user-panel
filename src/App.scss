@@ -57,6 +57,7 @@ body {
 }
 
 .popup {
+    z-index: 100;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -93,4 +94,34 @@ body {
     bottom: 0;
     background: #ccc;
     display: inline;
+}
+
+.comments{
+    width: 90%;
+    padding: 20px;
+    margin: 0 auto;
+
+}
+
+.commentItem{
+    position: relative;
+    // z-index: -1;
+    border: 1px solid;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+
+    #commentStatus{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 30px;
+        background: red;
+        border-radius: 10px;
+    }
+
+}
+.colored{
+    background: green !important;
 }

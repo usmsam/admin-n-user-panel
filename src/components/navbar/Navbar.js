@@ -9,7 +9,7 @@ const Navbar = () => {
   const dispatch = useDispatch()
   const popup = useSelector(state => state.popup)
   const login = useSelector(state => state.login.loggined)
-  console.log(login);
+  // console.log(login);
 
 
   return (

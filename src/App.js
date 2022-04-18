@@ -6,7 +6,6 @@ import './App.scss'
 import Home from './components/home/Home'
 import { Provider } from 'react-redux';
 import { store } from './store'
-import Helper from './components/helper/Helper'
 
 function App() {
 
@@ -17,7 +16,6 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
 
-      <Helper/>
         <Navbar />
         <Routes>
           <Route path='/news' element={<Body />} />
