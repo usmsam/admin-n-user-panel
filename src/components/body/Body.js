@@ -5,22 +5,34 @@ import { useDispatch } from 'react-redux'
 const Body = () => {
 
   const state = useSelector(state => state)
-
   const login = useSelector(state => state.login)
-
   const [filtered, setFiltered] = useState(state.com)
-  // setFiltered([])
-
   const dispatch = useDispatch()
-
-
   const ref = useRef()
   const ref2 = useRef()
 
 
+
+  const daaa = state.com.filter((item) => {
+      if(!login.loggined){
+        return item.verify
+      }else{
+        return item
+      }
+  })
   useEffect(() => {
-    setFiltered(state.com)
+    if (login.loggined) {
+      setFiltered(state.com)
+    }
   }, [state.com])
+
+
+
+
+
+
+
+
 
   function addComment() {
     dispatch({ id: state.com.length + 1, type: 'ADD', payload: { title: ref.current.value, text: ref2.current.value } })
@@ -51,7 +63,7 @@ const Body = () => {
 
 
         {
-          filtered.map((item) => {
+          daaa.map((item) => {
             return <div key={item.text} className='commentItem'>
               <h3>{item.id}. {item.title}</h3>
               <p>{item.text}  {item.date}</p>
