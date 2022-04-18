@@ -20,7 +20,7 @@ export const loginReducer = (state = initialState, action) => {
             }
 
         case 'LOGOUT':
-            return { ...state, loggined: false }
+            return { ...state, loggined: false  ,admin:false}
         default:
             return state;
     }

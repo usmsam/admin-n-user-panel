@@ -1,0 +1,135 @@
+* {
+  text-decoration: none;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbarlogo {
+  height: 100px;
+}
+
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 80%;
+  margin: 0 auto;
+  border-bottom: 1px solid #ccc;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.buttons > button {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px 30px;
+  border: none;
+  background: transparent;
+  -webkit-box-shadow: -1px 0px 5px 1px #5c5c5c;
+          box-shadow: -1px 0px 5px 1px #5c5c5c;
+  border-radius: 10px;
+}
+
+.buttons > button.vhod {
+  background-color: #2aac31;
+  color: #fff;
+  font-weight: 700;
+}
+
+.buttons > button.vhod:hover {
+  background-color: #6bca6f;
+}
+
+.buttons > button:not(:last-child) {
+  margin-right: 20px;
+}
+
+.popup {
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translatex(-50%) translateY(-50%);
+          transform: translatex(-50%) translateY(-50%);
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 30px 30px;
+  border: 1px solid #ccc;
+  background-color: rgba(149, 150, 223, 0.644);
+}
+
+.popup input {
+  padding: 5px 30px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.popup button {
+  padding: 5px 30px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.help {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #ccc;
+  display: inline;
+}
+
+.comments {
+  width: 90%;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.commentItem {
+  position: relative;
+  border: 1px solid;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.commentItem #commentStatus {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 30px;
+  background: red;
+  border-radius: 10px;
+}
+
+.colored {
+  background: green !important;
+}
