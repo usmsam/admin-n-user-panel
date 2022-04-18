@@ -10,7 +10,7 @@ import { store } from './store'
 function App() {
 
 
-  const [userStatus, setUserStatus] = useState(false)
+ 
   
   return (
     <Provider store={store}>
