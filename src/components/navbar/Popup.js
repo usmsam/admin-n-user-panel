@@ -1,6 +1,6 @@
 import React, {useRef } from 'react'
 
-import {useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Error from './Error'
 
 const Popup = () => {
