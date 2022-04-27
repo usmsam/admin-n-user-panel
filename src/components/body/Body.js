@@ -1,49 +1,53 @@
-import React, { useRef } from 'react'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import React, { Fragment, useRef, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { addCommentAction, verifyCommentAction, verifyClearAction } from '../actions/actions'
 
 const Body = () => {
-
+  /* State from store Redux */
   const state = useSelector(state => state)
-  const login = useSelector(state => state.login)
+  /*=======================================*/
+
   const dispatch = useDispatch()
-  const ref = useRef()
-  const ref2 = useRef()
-  const daaa = state.com.filter((item) => {
-    if (!login.loggined) {
+
+  const [loginText, setLoginText] = useState('')
+  const [passwordText, setPasswordText] = useState('')
+
+
+  const dataList = state.comment.filter((item) => {
+    if (!state.login.logined) {
       return item.verify
     } else {
       return item
     }
   })
-  function addComment() {
-    if (ref.current.value.trim() !== '' && ref2.current.value.trim() !== '') {
-      dispatch({ id: state.com.length + 1, type: 'ADD', payload: { title: ref.current.value, text: ref2.current.value } })
-      ref.current.value = null
-      ref2.current.value = null
-    }
 
-  }
-  function verifyComment(id) {
-    dispatch({ type: "VERIFY", payload: id })
-  }
+
+
+
+
+
   return (
-    <>
-      <>
-        {
-          login.loggined
-            ?
-            <>
-              <input ref={ref} type="text" />
-              <input ref={ref2} type="text" />
-              <button onClick={() => addComment()}> Add</button>
-            </>
-            :
-            null
+    <Fragment>
+      {
+        state.login.logined
+          ?
+          <Fragment>
+            <input value={loginText} type="text" onChange={(e) => setLoginText(e.target.value)} />
+            <input value={passwordText} type="text" onChange={(e) => setPasswordText(e.target.value)} />
+            <button onClick={() => {
+              dispatch(addCommentAction(loginText, passwordText))
+              setLoginText('')
+              setPasswordText('')
+            }
+            }>Add</button>
+          </Fragment>
+          :
+          null
 
-        }
-        {
-          daaa.map((item) => {
+      }
+      {
+        dataList.length > 0 ?
+          dataList.map((item) => {
             return <div key={item.text} className='commentItem'>
               <h3>{item.id}. {item.title}</h3>
               <p>{item.text}  {item.date}</p>
@@ -55,26 +59,33 @@ const Body = () => {
               }
 
               {
-                login.admin ?
-                  <button
-                    onClick={() => {
-                      verifyComment(item.id)
-                    }}
-                  >
-                    Одобрить
-                  </button>
+                state.login.admin ?
+                  !item.verify ?
+                    <button
+                      onClick={() => {
+                        dispatch(verifyCommentAction(item.id))
+                      }}
+                    >
+                      Одобрить
+                    </button>
+                    :
+                    <button
+                      onClick={() => {
+                        dispatch(verifyClearAction(item.id))
+                      }}
+                    >
+                      Вернуть
+                    </button>
                   :
-                  ''
+                  null
               }
             </div>
           })
-        }
+          :
+          <center><h1>No comments</h1></center>
+      }
+    </Fragment>
 
-
-
-      </>
-
-    </>
   )
 }
 
