@@ -5,7 +5,7 @@ import { popupReducer } from './reducers/popupReducer';
 
 const rootReducer = combineReducers({
   popup: popupReducer,
-  login : loginReducer,
-  com:commentReducer
+  login: loginReducer,
+  comment: commentReducer
 })
 export const store = createStore(rootReducer)
