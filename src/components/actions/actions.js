@@ -6,18 +6,12 @@ export function loginAction(login, password) {
         payload: { login: login, pass: password }
     }
 }
-
-
 export function togglePopupAction() {
     return { type: TOGGLE_POPUP }
 }
-
-
 export function logoutAction() {
     return { type: LOGOUT }
 }
-
-
 export function addCommentAction(loginText, passwordText) {
     if (loginText.trim() !== '' && passwordText.trim() !== '') {
         return {
@@ -26,7 +20,6 @@ export function addCommentAction(loginText, passwordText) {
         }
     }
 }
-
 export function verifyCommentAction(id) {
     return {
         type: VERIFY_COMMENT,

@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addCommentAction, verifyCommentAction, verifyClearAction } from '../actions/actions'
 
