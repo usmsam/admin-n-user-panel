@@ -4,20 +4,19 @@ import { useSelector } from 'react-redux';
 
 
 const Home = () => {
-  const a = useSelector(state => state.login);
-
-
-
+  
+  const state = useSelector(state => state.login);
   return (
     <div style={{ fontSize: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-
-
       {
-        a.loggined
+        state.admin
           ?
-          `Привет ${login}`
+          'Привет admin'
           :
-          'Привет вы Гость в дaнный момент , авторизуйтесь !!!'
+          state.logined ?
+            `Привет ${login}`
+            :
+            'Привет Гость, авторизуйтесь !!!'
       }
     </div>
   )
