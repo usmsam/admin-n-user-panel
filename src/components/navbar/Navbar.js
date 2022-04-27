@@ -1,39 +1,38 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Sam from './sam.png'
-import Popup from './Popup';
+import Popup from '../popup/Popup';
 import { useSelector, useDispatch } from 'react-redux'
-
+import { togglePopupAction, logoutAction } from '../actions/actions';
 
 const Navbar = () => {
   const dispatch = useDispatch()
-  const popup = useSelector(state => state.popup)
-  const login = useSelector(state => state.login.loggined)
-  // console.log(login);
-
+  const { login, popup } = useSelector(state => state)
 
   return (
     <div className='navbar'>
-      <Link to='/'><img src={Sam} className='navbarlogo' alt='logo'/></Link>
+      <Link to='/'><img src={Sam} className='navbarlogo' alt='logo' /></Link>
+
       <div className='buttons'>
-        <button
-          className='news'
-        >
+
+        <button className='news'>
           <Link to='/news'>Новости</Link>
         </button>
 
 
-        {login !== true ?
-          < button
+        {login.logined !== true ?
+          <button
             className='sign vhod'
-            onClick={() => dispatch({ type: 'TOGGLE_POPUP' })}
+            onClick={() => dispatch(togglePopupAction())}
           >
             Вход
           </button>
+
           :
+
           <button
             className='sign '
-            onClick={() => dispatch({ type: 'LOGOUT' })}
+            onClick={() => dispatch(logoutAction())}
           >
             Выход
           </button>
@@ -42,18 +41,18 @@ const Navbar = () => {
       </div>
 
 
+
+
       {
-        login === false ?
+        /* =============   popup  ================= */
+        login.logined === false ?
           popup.status ?
             <Popup />
             :
             null
           :
           null
-      }
-
-      {
-
+        /* =============   popup END  ================= */
       }
     </div >
   )
